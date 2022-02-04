@@ -1,7 +1,6 @@
-package com.example.mvvmprac
+package com.example.mvvmprac.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
