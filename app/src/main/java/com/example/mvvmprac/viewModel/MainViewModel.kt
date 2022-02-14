@@ -7,11 +7,16 @@ import com.example.mvvmprac.model.DataModel
 import com.example.mvvmprac.model.enum.KakaoSearchSortEnum
 import com.example.mvvmprac.base.BaseKotlinViewModel
 import com.example.mvvmprac.model.response.ImageSearchResponse
+import com.example.mvvmprac.util.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class MainViewModel(private val model : DataModel) : BaseKotlinViewModel() {
     private val TAG = "MainViewModel"
+
+    private val _startSubActivityEvent = SingleLiveEvent<Any>()
+    val startSubActivityEvent:LiveData<Any>
+        get() = _startSubActivityEvent
 
     private val _imageSearchResponseLiveData = MutableLiveData<ImageSearchResponse>()
     val imageSearchResponseLiveData:LiveData<ImageSearchResponse>

@@ -1,9 +1,13 @@
 package com.example.mvvmprac.base
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 
 /**
@@ -43,8 +47,19 @@ abstract class BaseKotlinActivity<T : ViewDataBinding, R : BaseKotlinViewModel> 
 
         viewDataBinding = DataBindingUtil.setContentView(this, layoutResourceId)
 
+        snackbarObserving()
         initStartView()
         initDataBinding()
         initAfterBinding()
     }
+
+    private fun snackbarObserving(){
+        viewModel.observeSnackbarMessage(this){
+            Snackbar.make(findViewById(android.R.id.content), it, Snackbar.LENGTH_LONG).show()
+        }
+        viewModel.observeSnackbarMessageStr(this){
+            Snackbar.make(findViewById(android.R.id.content), it, Snackbar.LENGTH_LONG).show()
+        }
+    }
+
 }

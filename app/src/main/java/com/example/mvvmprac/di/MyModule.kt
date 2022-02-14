@@ -1,5 +1,6 @@
 package com.example.mvvmprac.di
 
+import com.example.mvvmprac.MainSearchRecyclerViewAdapter
 import com.example.mvvmprac.model.DataModel
 import com.example.mvvmprac.model.DataModelImpl
 import com.example.mvvmprac.model.service.KakaoSearchService
@@ -21,7 +22,11 @@ var retrofitPart = module{
     }
 }
 
-var
+var adapterPart = module{
+    factory {
+        MainSearchRecyclerViewAdapter()
+    }
+}
 
 var modelPart = module {
     factory<DataModel> {
@@ -35,4 +40,4 @@ var viewModelPart = module{
     }
 }
 
-var myDiModule = listOf(retrofitPart, modelPart, viewModelPart)
+var myDiModule = listOf(retrofitPart, adapterPart, modelPart, viewModelPart)

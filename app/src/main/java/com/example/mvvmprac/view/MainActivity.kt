@@ -14,15 +14,16 @@ import com.example.mvvmprac.databinding.ActivityMainBinding
 import com.example.mvvmprac.viewModel.MainViewModel
 import io.reactivex.internal.operators.observable.ObservableElementAt
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseKotlinActivity<ActivityMainBinding,MainViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_main
-    override val viewModel: MainViewModel by viewModel()
+    override val viewModel:MainViewModel by viewModel()
 
     private val mainSearchRecyclerViewAdapter: MainSearchRecyclerViewAdapter by inject()
 
-    private val recyclerView = findViewById<RecyclerView>(R.id.main_activity_search_recycler_view)
+    private val recyclerView : RecyclerView = findViewById(R.id.main_activity_search_recycler_view)
     private val button = findViewById<Button>(R.id.main_activity_search_button)
     private val textView = findViewById<EditText>(R.id.main_activity_search_text_view)
 
