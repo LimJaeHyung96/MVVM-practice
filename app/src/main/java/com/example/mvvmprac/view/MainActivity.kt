@@ -23,12 +23,9 @@ class MainActivity : BaseKotlinActivity<ActivityMainBinding,MainViewModel>() {
 
     private val mainSearchRecyclerViewAdapter: MainSearchRecyclerViewAdapter by inject()
 
-    private val recyclerView : RecyclerView = findViewById(R.id.main_activity_search_recycler_view)
-    private val button = findViewById<Button>(R.id.main_activity_search_button)
-    private val textView = findViewById<EditText>(R.id.main_activity_search_text_view)
-
+    //DataBinding의 형식으로 값을 받아옴
     override fun initStartView() {
-        recyclerView.run {
+        viewDataBinding.mainActivitySearchRecyclerView.run {
             adapter = mainSearchRecyclerViewAdapter
             layoutManager = StaggeredGridLayoutManager(3,1).apply {
                 gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
@@ -48,8 +45,8 @@ class MainActivity : BaseKotlinActivity<ActivityMainBinding,MainViewModel>() {
     }
 
     override fun initAfterBinding() {
-        button.setOnClickListener {
-            viewModel.getImageSearch(textView.text.toString(),1,80)
+        viewDataBinding.mainActivitySearchButton.setOnClickListener {
+            viewModel.getImageSearch(viewDataBinding.mainActivitySearchTextView.text.toString(),1,80)
         }
     }
 }
